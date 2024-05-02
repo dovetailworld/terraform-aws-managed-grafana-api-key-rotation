@@ -28,7 +28,7 @@ def lambda_handler(event, context):
     try:
         new_api_key = grafana_client.create_workspace_api_key(
             keyName=grafana_api_key_name,
-            keyRole='ADMIN',
+            keyRole='EDITOR',
             secondsToLive=2592000,
             workspaceId=grafana_workspace_id
         )['key']
