@@ -34,6 +34,7 @@ resource "aws_lambda_function" "api_key_rotation" {
       GRAFANA_API_SECRET_ARN = aws_secretsmanager_secret.api_key.arn
       GRAFANA_API_KEY_NAME   = "${var.name}-managed-api-key"
       GRAFANA_WORKSPACE_ID   = var.grafana_workspace_id
+      KEY_ROLE               = var.key_role
     }
   }
 

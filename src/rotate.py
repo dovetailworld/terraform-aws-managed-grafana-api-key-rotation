@@ -14,6 +14,7 @@ def lambda_handler(event, context):
     grafana_secret_arn = os.environ['GRAFANA_API_SECRET_ARN']
     grafana_api_key_name = os.environ['GRAFANA_API_KEY_NAME']
     grafana_workspace_id = os.environ['GRAFANA_WORKSPACE_ID']
+    key_role = os.environ['KEY_ROLE']
 
     # Delete key if exists
     try:
@@ -28,7 +29,7 @@ def lambda_handler(event, context):
     try:
         new_api_key = grafana_client.create_workspace_api_key(
             keyName=grafana_api_key_name,
-            keyRole='EDITOR',
+            keyRole=key_role,
             secondsToLive=2592000,
             workspaceId=grafana_workspace_id
         )['key']
